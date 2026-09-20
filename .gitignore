@@ -1,0 +1,27 @@
+# Build
+/dist
+/www
+/out-tsc
+
+# Dependencies
+/node_modules
+
+# Capacitor native projects (generated, not hand-authored)
+/ios
+/android
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# Env
+.env

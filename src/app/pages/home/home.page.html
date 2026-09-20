@@ -1,0 +1,51 @@
+<ion-header>
+  <div class="masthead">
+    <h1 class="font-display">
+      <span class="mark"></span>
+      Pokédex
+    </h1>
+    <p class="subhead">A field guide to every known Pokémon.</p>
+  </div>
+
+  <div class="search-row">
+    <ion-icon name="search"></ion-icon>
+    <input
+      class="search-input"
+      type="search"
+      placeholder="Search by name"
+      [value]="searchTerm"
+      (input)="onSearchChange($any($event.target).value)"
+    />
+  </div>
+
+  <app-type-filter [selectedType]="selectedType" (typeSelected)="onTypeSelected($event)"></app-type-filter>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="loading" class="empty-state">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading Pokémon…</p>
+  </div>
+
+  <div *ngIf="!loading && loadError" class="empty-state">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <p>Couldn't reach the Pokédex servers. Pull down to try again.</p>
+  </div>
+
+  <div *ngIf="!loading && !loadError && displayed.length === 0" class="empty-state">
+    <ion-icon name="search"></ion-icon>
+    <p>No Pokémon match your search.</p>
+  </div>
+
+  <div class="pokemon-grid" *ngIf="!loading && !loadError && displayed.length > 0">
+    <app-pokemon-card *ngFor="let pokemon of displayed" [pokemon]="pokemon" (open)="onCardOpen($event)"></app-pokemon-card>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [disabled]="!!selectedType">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Fetching more Pokémon…"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

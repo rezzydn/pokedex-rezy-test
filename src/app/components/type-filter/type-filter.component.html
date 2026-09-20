@@ -1,0 +1,21 @@
+<div class="filter-row">
+  <span class="filter-label">Filter by type</span>
+  <div class="chip-scroller">
+    <ng-container *ngIf="!loading; else skeleton">
+      <button
+        *ngFor="let type of types"
+        class="type-tag"
+        [class.selected]="selectedType === type"
+        [style.--tag-color]="'var(--type-' + type + ')'"
+        (click)="select(type)"
+      >
+        <span class="capitalize">{{ type }}</span>
+        <ion-icon *ngIf="selectedType === type" name="close-circle"></ion-icon>
+      </button>
+    </ng-container>
+
+    <ng-template #skeleton>
+      <ion-skeleton-text *ngFor="let i of [1, 2, 3, 4, 5]" [animated]="true" class="tag-skeleton"></ion-skeleton-text>
+    </ng-template>
+  </div>
+</div>

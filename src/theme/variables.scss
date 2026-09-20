@@ -1,0 +1,62 @@
+:root {
+  --color-paper: #131211;
+  --color-paper-raised: #1c1a17;
+  --color-ink: #f2efe6;
+  --color-ink-soft: #c7c2b3;
+  --color-ink-faint: #8c8778;
+  --color-line: #322e26;
+  --color-red: #ff4522;
+  --color-red-tint: #3a1c14;
+  --color-forest: #5c9a63;
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-tag: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
+
+  --ion-font-family: var(--font-body);
+  --ion-background-color: var(--color-paper);
+  --ion-background-color-rgb: 19, 18, 17;
+  --ion-text-color: var(--color-ink);
+  --ion-text-color-rgb: 242, 239, 230;
+  --ion-toolbar-background: var(--color-paper);
+  --ion-toolbar-color: var(--color-ink);
+  --ion-tab-bar-background: var(--color-paper-raised);
+  --ion-tab-bar-color: var(--color-ink-faint);
+  --ion-tab-bar-color-selected: var(--color-red);
+  --ion-item-background: transparent;
+  --ion-card-background: var(--color-paper-raised);
+  --ion-border-color: var(--color-line);
+
+  --ion-color-primary: #ff4522;
+  --ion-color-primary-rgb: 255, 69, 34;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #e03d1e;
+  --ion-color-primary-tint: #ff5a3a;
+
+  --ion-color-medium: #8c8778;
+  --ion-color-medium-rgb: 140, 135, 120;
+
+  color-scheme: dark;
+}
+
+:root {
+  --type-normal: #b3b491;
+  --type-fire: #f0854a;
+  --type-water: #63a1ec;
+  --type-electric: #f2cc3c;
+  --type-grass: #6fb85a;
+  --type-ice: #83d6d3;
+  --type-fighting: #d0574a;
+  --type-poison: #b062b0;
+  --type-ground: #d9ab5c;
+  --type-flying: #a3a3ea;
+  --type-psychic: #ee81a8;
+  --type-bug: #b0c247;
+  --type-rock: #c2a94e;
+  --type-ghost: #8672c4;
+  --type-dragon: #7a63ef;
+  --type-dark: #a58f7c;
+  --type-steel: #b6b6cc;
+  --type-fairy: #eba9bb;
+}

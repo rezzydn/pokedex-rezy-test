@@ -1,0 +1,22 @@
+<ion-header>
+  <div class="masthead">
+    <h1 class="font-display">
+      <span class="mark"></span>
+      Favorites
+    </h1>
+    <p class="subhead">Pokémon you've marked to remember.</p>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="favorites$ | async as favorites">
+    <div *ngIf="favorites.length === 0" class="empty-state">
+      <ion-icon name="heart-dislike-outline"></ion-icon>
+      <p>You haven't favourited any Pokémon yet. Tap the heart on a Pokémon to add it here.</p>
+    </div>
+
+    <div class="pokemon-grid" *ngIf="favorites.length > 0">
+      <app-pokemon-card *ngFor="let pokemon of favorites" [pokemon]="pokemon" (open)="onCardOpen($event)"></app-pokemon-card>
+    </div>
+  </ng-container>
+</ion-content>

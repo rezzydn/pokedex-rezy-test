@@ -1,0 +1,70 @@
+<ion-header>
+  <div class="nav-row">
+    <ion-back-button defaultHref="/tabs/home" text=""></ion-back-button>
+    <button *ngIf="pokemon" class="favorite-toggle" (click)="toggleFavorite()" aria-label="Toggle favorite">
+      <ion-icon [name]="(isFavorite$ | async) ? 'heart' : 'heart-outline'"></ion-icon>
+    </button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="loading" class="empty-state">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading Pokémon…</p>
+  </div>
+
+  <div *ngIf="!loading && loadError" class="empty-state">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <p>Couldn't load this Pokémon. Check your connection and go back to try again.</p>
+  </div>
+
+  <div *ngIf="!loading && pokemon as p" class="detail">
+    <div class="hero" [style.--wash]="typeColorVar(p.types[0])">
+      <span class="dex-tag">No. {{ p.id.toString().padStart(3, '0') }}</span>
+      <ion-img [src]="p.artworkUrl" [alt]="p.name"></ion-img>
+    </div>
+
+    <div class="identity">
+      <h1 class="font-display capitalize">{{ p.name }}</h1>
+      <div class="types">
+        <span
+          *ngFor="let type of p.types"
+          class="type-tag capitalize"
+          [style.--tag-color]="typeColorVar(type)"
+        >{{ type }}</span>
+      </div>
+    </div>
+
+    <p class="description">{{ p.description }}</p>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="fact-label">Height</span>
+        <span class="fact-value">{{ p.heightM }} m</span>
+      </div>
+      <div class="fact">
+        <span class="fact-label">Weight</span>
+        <span class="fact-value">{{ p.weightKg }} kg</span>
+      </div>
+      <div class="fact">
+        <span class="fact-label">Abilities</span>
+        <span class="fact-value capitalize">{{ p.abilities.join(', ') }}</span>
+      </div>
+    </div>
+
+    <h2 class="font-display section-title">Base stats</h2>
+    <div class="stats">
+      <div class="stat-row" *ngFor="let stat of p.stats">
+        <span class="stat-name capitalize">{{ stat.name }}</span>
+        <div class="stat-track">
+          <div
+            class="stat-fill"
+            [style.width.%]="(stat.value / maxStat) * 100"
+            [style.background]="typeColorVar(p.types[0])"
+          ></div>
+        </div>
+        <span class="stat-value">{{ stat.value }}</span>
+      </div>
+    </div>
+  </div>
+</ion-content>
